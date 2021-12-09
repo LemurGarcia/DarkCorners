@@ -14,5 +14,7 @@ private:
     std::unique_ptr<RenderableEntity>               m_board_back;
     std::vector<std::unique_ptr<RenderableEntity>>  m_cells;
 
+    float m_board_padding = 0.05f;
+
     Entity m_camera;
 };
