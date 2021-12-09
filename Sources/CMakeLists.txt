@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8)
-project(Odyssey)
+project(DarkCorners)
 
 set(GAME_DIR ${PROJECT_SOURCE_DIR})
 
@@ -50,5 +50,5 @@ set(LINK
     Game
 )
 
-add_executable(Odyssey ${SRC})
-target_link_libraries(Odyssey ${LINK})
+add_executable(DarkCorners ${SRC})
+target_link_libraries(DarkCorners ${LINK})

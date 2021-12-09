@@ -4,7 +4,9 @@
 #include "Engine/Texture.h"
 #include "Engine/Inputs.h"
 #include "Engine/Font.h"
+#include "Game/Board.h"
 #include <global.h>
+#include <memory>
 
 static int CalcFPS(uint64_t delta)
 {
@@ -27,7 +29,9 @@ static int CalcFPS(uint64_t delta)
 class Application : public Engine
 {
 public:
-    Application() : Engine()
+    Application()
+        : Engine()
+        , m_board(std::make_unique<Board>())
     {
         OnSize(Engine::GetWidth(), Engine::GetHeight());
         PV_INFO("Load game complete");
@@ -46,8 +50,13 @@ protected:
 
     void Loop(uint64_t delta) override
     {
+        //m_board->Update(delta);
+        m_board->Render();
+
         Font::Render(L"#gFPS = " + std::to_wstring(CalcFPS(delta)), { -0.95f, -0.85f });
     }
+private:
+    std::unique_ptr<Board> m_board;
 };
 
 int main(int argc, const char* argv[])
